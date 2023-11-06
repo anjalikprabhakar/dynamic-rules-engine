@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "c5edb69e-c461-4f41-a71d-859047c8111e",
+		"name": "dynamic-rules-engine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17020731"
+	},
+	"item": [
+		{
+			"name": "getAllRules",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/rule",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"rule"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createRule",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"description\":\"some desc\",\r\n\"condition\":\"condition\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/rule/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"rule",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteRuleById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/rule/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"rule",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
