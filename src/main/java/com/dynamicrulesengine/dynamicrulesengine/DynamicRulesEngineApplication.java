@@ -21,5 +21,4 @@ public class DynamicRulesEngineApplication {
 				.setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
 		return mapper;
 	}
-
 }
