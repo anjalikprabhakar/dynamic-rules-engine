@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "c5edb69e-c461-4f41-a71d-859047c8111e",
+		"_postman_id": "694a919a-78a1-4b62-ae24-e4aeccf1c948",
 		"name": "dynamic-rules-engine",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "17020731"
+		"_exporter_id": "21897253"
 	},
 	"item": [
 		{
@@ -69,6 +69,43 @@
 						"api",
 						"rule",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "fraudDetection",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"orderId\": \"789101\",\r\n\"customer\": {\r\n\"id\": \"cust202\",\r\n\"name\": \"Jane Smith\"\r\n},\r\n\"order\": {\r\n\"amount\": 50000,\r\n\"paymentMethod\": \"credit_card\",\r\n\"date\": \"2023-11-03\"\r\n}\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/rule/fraudDetection",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"rule",
+						"fraudDetection"
 					]
 				}
 			},

@@ -1,7 +1,9 @@
 package com.dynamicrulesengine.dynamicrulesengine.controller;
 
 import com.dynamicrulesengine.dynamicrulesengine.contract.request.DiscountRequest;
+import com.dynamicrulesengine.dynamicrulesengine.contract.request.FraudOrder;
 import com.dynamicrulesengine.dynamicrulesengine.contract.response.DiscountResponse;
+import com.dynamicrulesengine.dynamicrulesengine.contract.response.FraudDetectionResponse;
 import com.dynamicrulesengine.dynamicrulesengine.service.RuleEvaluationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,10 @@ public class RuleEvaluationController {
     @PostMapping("/discount")
     public ResponseEntity<DiscountResponse> applyDiscountForVIP(@RequestBody DiscountRequest discountRequest){
             return  ResponseEntity.ok(evaluationService.applyDiscountForVIP(discountRequest));
+    }
+    @PostMapping ("/fraudDetection")
+    public FraudDetectionResponse checkOrderForFraud(@RequestBody FraudOrder fraudOrder){
+        return evaluationService.checkOrderForFraud(fraudOrder);
     }
 
 }
