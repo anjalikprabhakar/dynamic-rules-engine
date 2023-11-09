@@ -10,6 +10,7 @@ import com.dynamicrulesengine.dynamicrulesengine.contract.response.MembershipRen
 import com.dynamicrulesengine.dynamicrulesengine.contract.response.ProductResponse;
 import com.dynamicrulesengine.dynamicrulesengine.service.RuleEvaluationService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/rule")
 @RequiredArgsConstructor
 public class RuleEvaluationController {
+
     private final RuleEvaluationService evaluationService;
 
     @PutMapping("/discount")
@@ -36,5 +38,12 @@ public class RuleEvaluationController {
     @PutMapping("/renewal")
     public ResponseEntity<MembershipRenewalResponse> renewMembership(@RequestBody MembershipRenewalRequest membershipRenewalRequest){
         return ResponseEntity.ok(evaluationService.renewMembership(membershipRenewalRequest));
+    }
+
+    @PostMapping("/low-stock-notification")
+    public ResponseEntity<Object> lowStockNotification(@RequestBody ProductRequest productRequest){
+        boolean result = evaluationService.sendLowStockNotification(productRequest);
+
+        return ResponseEntity.ok().body("{\"notificationSent\": \"" + result + "\"}");
     }
 }
