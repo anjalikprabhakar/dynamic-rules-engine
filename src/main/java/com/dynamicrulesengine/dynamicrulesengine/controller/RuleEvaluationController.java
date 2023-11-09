@@ -2,8 +2,10 @@ package com.dynamicrulesengine.dynamicrulesengine.controller;
 
 import com.dynamicrulesengine.dynamicrulesengine.contract.request.DiscountRequest;
 import com.dynamicrulesengine.dynamicrulesengine.contract.request.FraudOrder;
+import com.dynamicrulesengine.dynamicrulesengine.contract.request.ProductRequest;
 import com.dynamicrulesengine.dynamicrulesengine.contract.response.DiscountResponse;
 import com.dynamicrulesengine.dynamicrulesengine.contract.response.FraudDetectionResponse;
+import com.dynamicrulesengine.dynamicrulesengine.contract.response.ProductResponse;
 import com.dynamicrulesengine.dynamicrulesengine.service.RuleEvaluationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +27,11 @@ public class RuleEvaluationController {
     @PostMapping ("/fraudDetection")
     public FraudDetectionResponse checkOrderForFraud(@RequestBody FraudOrder fraudOrder){
         return evaluationService.checkOrderForFraud(fraudOrder);
+    }
+
+    @PostMapping("/replenish")
+    public ResponseEntity<ProductResponse> replenishInventory(@RequestBody ProductRequest productRequest){
+        return  ResponseEntity.ok(evaluationService.replenishInventory(productRequest));
     }
 
 }

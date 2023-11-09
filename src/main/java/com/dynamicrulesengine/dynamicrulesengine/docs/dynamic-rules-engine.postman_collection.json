@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "694a919a-78a1-4b62-ae24-e4aeccf1c948",
+		"_postman_id": "c4385fc4-487d-470a-9a41-ce431e198423",
 		"name": "dynamic-rules-engine",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "21897253"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -75,10 +74,32 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "DiscountRule",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"orderId\": \"123456\",\r\n  \"customer\": {\r\n    \"id\": \"cust101\",\r\n    \"name\": \"John Doe\",\r\n    \"status\": \"VIP\"\r\n  },\r\n  \"order\": {\r\n    \"total\": 150.00,\r\n    \"items\": [\r\n      {\r\n        \"productId\": \"prod-200\",\r\n        \"name\": \"Bluetooth Speaker\",\r\n        \"price\": 150.0,\r\n        \"quantity\": 1\r\n      }\r\n    ],\r\n    \"date\": \"2023-11-03\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/rule/discount",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"rule",
+						"discount"
+					]
+				}
 			},
 			"response": []
 		},
@@ -106,6 +127,36 @@
 						"api",
 						"rule",
 						"fraudDetection"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InventoryReplenishmentRule",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"productId\": \"prod-305\",\r\n  \"product\": {\r\n    \"name\": \"Wireless Mouse\",\r\n    \"stockLevel\": 8\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/rule/replenish",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"rule",
+						"replenish"
 					]
 				}
 			},
