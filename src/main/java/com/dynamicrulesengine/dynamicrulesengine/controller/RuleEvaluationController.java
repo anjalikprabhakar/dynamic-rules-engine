@@ -37,5 +37,4 @@ public class RuleEvaluationController {
     public ResponseEntity<MembershipRenewalResponse> renewMembership(@RequestBody MembershipRenewalRequest membershipRenewalRequest){
         return ResponseEntity.ok(evaluationService.renewMembership(membershipRenewalRequest));
     }
-
 }

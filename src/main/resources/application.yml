@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/dynamic_rule_engine
+    url: jdbc:postgresql://localhost:5432/dynamic-rules-engine
     username: postgres
-    password: postgres
+    password: asd123.
 
   jpa:
     hibernate:
