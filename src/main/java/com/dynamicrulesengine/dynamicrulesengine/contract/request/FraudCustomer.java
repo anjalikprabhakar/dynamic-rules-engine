@@ -10,10 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FraudCustomer {
-
         private String id;
         private String name;
-
-
-    }
+}
 

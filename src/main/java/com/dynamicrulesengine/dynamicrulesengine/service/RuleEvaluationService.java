@@ -2,9 +2,11 @@ package com.dynamicrulesengine.dynamicrulesengine.service;
 
 import com.dynamicrulesengine.dynamicrulesengine.contract.request.DiscountRequest;
 import com.dynamicrulesengine.dynamicrulesengine.contract.request.FraudOrder;
+import com.dynamicrulesengine.dynamicrulesengine.contract.request.MembershipRenewalRequest;
 import com.dynamicrulesengine.dynamicrulesengine.contract.request.ProductRequest;
 import com.dynamicrulesengine.dynamicrulesengine.contract.response.DiscountResponse;
 import com.dynamicrulesengine.dynamicrulesengine.contract.response.FraudDetectionResponse;
+import com.dynamicrulesengine.dynamicrulesengine.contract.response.MembershipRenewalResponse;
 import com.dynamicrulesengine.dynamicrulesengine.contract.response.ProductResponse;
 import org.springframework.stereotype.Service;
 
@@ -47,5 +49,17 @@ public class RuleEvaluationService {
                 .stockLevel(stockLevel)
                 .build();
         return response;
+    }
+
+    public MembershipRenewalResponse renewMembership(MembershipRenewalRequest membershipRenewalRequest){
+        if(membershipRenewalRequest.getMembershipDetails().getLoyaltyPoints() >= 1000){
+            membershipRenewalRequest.getMembershipDetails().setMembershipType("PREMIUM");
+        }
+        MembershipRenewalResponse membershipRenewalResponse = MembershipRenewalResponse.builder()
+                .customerId(membershipRenewalRequest.getCustomerId())
+                .loyaltyPoints(membershipRenewalRequest.getMembershipDetails().getLoyaltyPoints())
+                .membershipType(membershipRenewalRequest.getMembershipDetails().getMembershipType())
+                .build();
+        return membershipRenewalResponse;
     }
 }
