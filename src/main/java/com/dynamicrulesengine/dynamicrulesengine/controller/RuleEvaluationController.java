@@ -2,17 +2,16 @@ package com.dynamicrulesengine.dynamicrulesengine.controller;
 
 import com.dynamicrulesengine.dynamicrulesengine.contract.request.DiscountRequest;
 import com.dynamicrulesengine.dynamicrulesengine.contract.request.FraudOrder;
+import com.dynamicrulesengine.dynamicrulesengine.contract.request.MembershipRenewalRequest;
 import com.dynamicrulesengine.dynamicrulesengine.contract.request.ProductRequest;
 import com.dynamicrulesengine.dynamicrulesengine.contract.response.DiscountResponse;
 import com.dynamicrulesengine.dynamicrulesengine.contract.response.FraudDetectionResponse;
+import com.dynamicrulesengine.dynamicrulesengine.contract.response.MembershipRenewalResponse;
 import com.dynamicrulesengine.dynamicrulesengine.contract.response.ProductResponse;
 import com.dynamicrulesengine.dynamicrulesengine.service.RuleEvaluationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/rule")
@@ -20,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RuleEvaluationController {
     private final RuleEvaluationService evaluationService;
 
-    @PostMapping("/discount")
+    @PutMapping("/discount")
     public ResponseEntity<DiscountResponse> applyDiscountForVIP(@RequestBody DiscountRequest discountRequest){
             return  ResponseEntity.ok(evaluationService.applyDiscountForVIP(discountRequest));
     }
@@ -29,9 +28,14 @@ public class RuleEvaluationController {
         return evaluationService.checkOrderForFraud(fraudOrder);
     }
 
-    @PostMapping("/replenish")
+    @PutMapping("/replenish")
     public ResponseEntity<ProductResponse> replenishInventory(@RequestBody ProductRequest productRequest){
         return  ResponseEntity.ok(evaluationService.replenishInventory(productRequest));
+    }
+
+    @PutMapping("/renewal")
+    public ResponseEntity<MembershipRenewalResponse> renewMembership(@RequestBody MembershipRenewalRequest membershipRenewalRequest){
+        return ResponseEntity.ok(evaluationService.renewMembership(membershipRenewalRequest));
     }
 
 }
