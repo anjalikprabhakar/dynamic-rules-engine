@@ -1,48 +1,55 @@
-##server:
-##  port: 8081
-##
-##spring:
-##  datasource:
-##    url: jdbc:postgresql://localhost:5432/postgres
-##    username: postgres
-##    password: password
-##
-##  jpa:
-##    show-sql: true
-##    properties:
-##      hibernate:
-##        dialect: org.hibernate.dialect.PostgreSQLDialect
-##    hibernate:
-##      ddl-auto: update
-##
-#
-##
-##
+server:
+  port: 8081
 #
 #spring:
 #  datasource:
-#    url: jdbc:postgresql://localhost:5432/dynamic-rules-engine
+#    url: jdbc:postgresql://localhost:5432/postgres
 #    username: postgres
-#    password: asd123.
+#    password: password
 #
 #  jpa:
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
 #    hibernate:
 #      ddl-auto: update
-#    show-sql: true
-#  mail:
-#    host: smtp.gmail.com
-#    port: 587
-#    username: anjalikprabhakaran@gmail.com  # Replace with your Gmail email
-#    password: qmfdzjujndtcgduf    # Replace with your Gmail password
-#    properties:
-#      mail:
-#          smtp:
-#            auth: true
-#            starttls:
-#              enable: true
-#              required: true
+#
+
 #
 #
-#notification:
-#  recipient:anjalikprabhakaran@gmail.com
-#  message:Stock for product {{productId}} is below critical level.
+
+spring:
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: password
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: anjalikprabhakaran@gmail.com  # Replace with your Gmail email
+    password: qmfdzjujndtcgduf    # Replace with your Gmail password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+
+
+
+notification:
+  recipient: your-email@example.com
+  message: Stock for product {{productId}} is below critical level
+
